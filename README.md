@@ -7,6 +7,17 @@ Le suivi se fait via un tableau centralisé permettant de visualiser, pour chaqu
 
 ---
 
+## Objectif et portée du projet
+
+Auto-Sending-Mail est conçu comme un outil **générique** de gestion de campagnes d’envoi de mails, basé sur un **sujet** (ou contexte) et des **templates conditionnels**.
+
+Le projet n’est pas limité à un cas d’usage spécifique :  
+il peut être utilisé aussi bien pour des campagnes de communication, de prospection, de suivi administratif, d’organisation d’événements ou encore de candidatures, ces dernières n’étant qu’un **exemple d’utilisation parmi d’autres**.
+
+Le fonctionnement repose sur l’association entre un sujet, une liste de destinataires et des règles définissant quels templates utiliser en fonction des réponses reçues ou de l’absence de réponse.
+
+---
+
 ## Front-end
 
 Dans un premier temps, l’interface doit permettre :
@@ -73,3 +84,13 @@ Le back-end doit assurer les fonctionnalités suivantes :
   - Identification des réponses à un mail existant
   - Différenciation entre une réponse, une nouvelle conversation ou une proposition
 - Mise à jour automatique des données du tableau en fonction des réponses reçues
+
+---
+
+## Exemples de cas d’usage
+
+- Campagnes d’envoi de mails basées sur un sujet
+- Relances automatiques en fonction des réponses reçues
+- Suivi individuel de destinataires via un tableau centralisé
+- Gestion de campagnes pour des associations, événements ou démarches administratives
+- Envoi de candidatures (exemple d’utilisation)
