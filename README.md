@@ -12,7 +12,7 @@ Dans un premier temps, l'interface doit permettre :
 
 - La connexion à un **profil propre au site**, chaque profil pouvant gérer **plusieurs liaisons de mail**.
 - Sur la gauche : sélection du mail de base.
-- Sur le milieu : onglets en haut permettant de naviguer entre :
+- Au centre : onglets en haut permettant de naviguer entre :
   - **Postes**
   - **Tableau**
   - **Calendrier**
@@ -28,9 +28,23 @@ Dans un premier temps, l'interface doit permettre :
 - Permet d'ajouter, modifier et supprimer le contenu.
 - Chaque ligne correspond à un **destinataire mail**.
 - Les colonnes incluent les catégories des **postes visés**.
+- Cet onglet servira de base pour le script de relance :
+  - Chaque ligne doit contenir toutes les informations nécessaires à la relance, telles que :  
+    - Nom  
+    - Mail  
+    - Dernier envoi  
+    - Dernière réponse reçue  
+    - Activé ou désactivé  
+    - Template utilisé selon la condition (template de relance, template de premier mail, ou autre)
 
 #### Calendrier
-- (À développer plus tard pour planification visuelle)
+- Interface permettant de visualiser quand seront envoyés les prochains mails et lesquels, et quand telle ou telle liste de mails a été reçue.
+- Aucune action initialement sur cette interface, c’est **uniquement du visuel**.
 
 #### Template
-- (À développer pour gérer les modèles d'email)
+- Interface permettant d'ajouter des templates pour les mails, récupérant les informations stockées dans le tableau.
+- Plusieurs types de mails possibles, comme :
+  - "Premier envoi"
+  - "Relance"
+  - Autres
+- Possibilité d’avoir des templates par défaut, **et la possibilité d’ajouter des templates personnalisés** qui seront récupérables dans le tableau.
