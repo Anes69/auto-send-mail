@@ -1,50 +1,75 @@
 # Auto-Sending-Mail
 
-Projet permettant d'avoir une interface via laquelle on connecte son mail.  
-On y insère la liste de destinataires, et on planifie quand, combien de fois, à quelle heure et quel mail envoyer à cette liste.  
-Le suivi permet de voir directement, via un tableau, quel destinataire a répondu à quel(s) mail(s).
+Auto-Sending-Mail est un projet visant à fournir une interface permettant de connecter un ou plusieurs comptes mail afin d’automatiser l’envoi, la relance et le suivi de mails.
+
+L’utilisateur peut importer une liste de destinataires, définir quand, combien de fois, à quelle heure et quel mail envoyer à cette liste.  
+Le suivi se fait via un tableau centralisé permettant de visualiser, pour chaque destinataire, les mails envoyés et les réponses reçues.
 
 ---
 
 ## Front-end
 
-Dans un premier temps, l'interface doit permettre :
+Dans un premier temps, l’interface doit permettre :
 
-- La connexion à un **profil propre au site**, chaque profil pouvant gérer **plusieurs liaisons de mail**.
-- Sur la gauche : sélection du mail de base.
-- Au centre : onglets en haut permettant de naviguer entre :
+- La connexion à un **profil propre à l’application**, chaque profil pouvant gérer **plusieurs comptes mail**.
+- Sur la gauche : sélection du compte mail actif.
+- Au centre : une navigation par onglets permettant d’accéder aux différentes fonctionnalités :
   - **Postes**
   - **Tableau**
   - **Calendrier**
-  - **Template**
+  - **Templates**
 
 ### Détails des onglets
 
 #### Postes
-- Une liste permettant d'insérer tous les postes désirés.
-- Les postes pourront être réutilisés dans les autres onglets.
+- Interface permettant de créer et gérer une liste de postes (ou catégories).
+- Les postes sont réutilisables dans les autres onglets, notamment dans le tableau.
 
 #### Tableau
-- Permet d'ajouter, modifier et supprimer le contenu.
+- Tableau central de l’application.
+- Permet l’ajout, la modification et la suppression de lignes.
 - Chaque ligne correspond à un **destinataire mail**.
-- Les colonnes incluent les catégories des **postes visés**.
-- Cet onglet servira de base pour le script de relance :
-  - Chaque ligne doit contenir toutes les informations nécessaires à la relance, telles que :  
-    - Nom  
-    - Mail  
-    - Dernier envoi  
-    - Dernière réponse reçue  
-    - Activé ou désactivé  
-    - Template utilisé selon la condition (template de relance, template de premier mail, ou autre)
+- Les colonnes incluent notamment :
+  - Nom
+  - Adresse mail
+  - Poste(s) visé(s)
+  - Date du dernier envoi
+  - Date de la dernière réponse reçue
+  - Statut (actif / désactivé)
+  - Template associé selon la situation (premier envoi, relance, autre)
+
+Cet onglet sert de **source principale de données** pour le script d’envoi et de relance :  
+chaque ligne doit contenir toutes les informations nécessaires à l’automatisation.
 
 #### Calendrier
-- Interface permettant de visualiser quand seront envoyés les prochains mails et lesquels, et quand telle ou telle liste de mails a été reçue.
-- Aucune action initialement sur cette interface, c’est **uniquement du visuel**.
+- Interface de visualisation des envois de mails passés et à venir.
+- Permet de voir :
+  - Quand les prochains mails seront envoyés
+  - Quels mails ont été envoyés à quelles listes
+- Aucune action directe dans un premier temps : **interface purement informative**.
 
-#### Template
-- Interface permettant d'ajouter des templates pour les mails, récupérant les informations stockées dans le tableau.
-- Plusieurs types de mails possibles, comme :
-  - "Premier envoi"
-  - "Relance"
-  - Autres
-- Possibilité d’avoir des templates par défaut, **et la possibilité d’ajouter des templates personnalisés** qui seront récupérables dans le tableau.
+#### Templates
+- Interface permettant de créer et gérer des modèles de mails.
+- Les templates peuvent récupérer automatiquement les informations stockées dans le tableau.
+- Plusieurs types de templates sont prévus :
+  - Premier envoi
+  - Relance
+  - Autres types personnalisés
+- Des templates par défaut seront disponibles, avec la possibilité d’en ajouter de nouveaux.
+- Les templates sont sélectionnables directement depuis l’onglet Tableau.
+
+---
+
+## Back-end
+
+Le back-end doit assurer les fonctionnalités suivantes :
+
+- Gestion des profils utilisateurs
+- Connexion et authentification aux comptes mail liés
+- Récupération des dossiers et sous-dossiers présents sur les comptes mail
+- Envoi automatique de mails selon les règles définies
+- Classement des mails envoyés et reçus dans les dossiers appropriés
+- Détection des mails entrants :
+  - Identification des réponses à un mail existant
+  - Différenciation entre une réponse, une nouvelle conversation ou une proposition
+- Mise à jour automatique des données du tableau en fonction des réponses reçues
