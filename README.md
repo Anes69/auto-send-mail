@@ -33,8 +33,17 @@ Dans un premier temps, l’interface doit permettre :
 ### Détails des onglets
 
 #### Postes
-- Interface permettant de créer et gérer une liste de postes (ou catégories).
-- Les postes sont réutilisables dans les autres onglets, notamment dans le tableau.
+- Un poste correspond à un tableau à part entière, pour chaque poste, un tableau est dessiné.
+- La création du profil poste doit correspondre à une ligne disposant sous forme de case les information suivantes :
+  - Nom (du poste)
+  - Domaine (Général, facultatif)
+  - Type (de contrat)
+  - Durée (hors CDI)
+  - Ecole (si alternance)
+  - Définition des envoies
+    - Premier envoie
+    - Relance (Si c'est tout les jours, une fois par semaine, quand dans la semaine etc...)
+  - Boutons d'intéractions (Activ/Inactif, Ajout, Modification, Suppression)
 
 #### Tableau
 - Tableau central de l’application.
@@ -43,12 +52,11 @@ Dans un premier temps, l’interface doit permettre :
 - Les colonnes incluent notamment :
   - Nom
   - Adresse mail
-  - Poste(s) visé(s)
+  - Numéro
+  - Numéro envoi
   - Date du dernier envoi
   - Date de la dernière réponse reçue
-  - Statut (actif / désactivé)
-  - Template associé selon la situation (premier envoi, relance, autre)
-
+  - Template associé selon la situation
 Cet onglet sert de **source principale de données** pour le script d’envoi et de relance :  
 chaque ligne doit contenir toutes les informations nécessaires à l’automatisation.
 
@@ -65,9 +73,8 @@ chaque ligne doit contenir toutes les informations nécessaires à l’automatis
 - Plusieurs types de templates sont prévus :
   - Premier envoi
   - Relance
-  - Autres types personnalisés
-- Des templates par défaut seront disponibles, avec la possibilité d’en ajouter de nouveaux.
-- Les templates sont sélectionnables directement depuis l’onglet Tableau.
+  - Refus
+  - Accepté
 
 ---
 
