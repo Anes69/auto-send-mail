@@ -1,0 +1,9 @@
+services:
+  sendmail:
+    image: nginx:alpine
+    container_name: sendmail
+    ports:
+      - "80:80"
+    volumes:
+      - ./Frontend:/usr/share/nginx/html:ro
+    restart: unless-stopped
