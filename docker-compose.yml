@@ -1,60 +1,29 @@
 services:
-  sendautomail:
-    image: sendautomail:latest
-    # Option locale quand l'application existera :
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile
-    container_name: sendautomail_app
-    restart: unless-stopped
+  sendmail-api:
+    image: python:3.11-slim
+    container_name: sendmail-api
+    working_dir: /app
+    volumes:
+      - .:/app
     environment:
-      APP_ENV: production
-      APP_PORT: 3000
-      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
-    expose:
-      - "3000"
-    depends_on:
-      db:
-        condition: service_healthy
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/appdb
+    command: sh -c "pip install fastapi uvicorn psycopg2-binary && uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
     networks:
-      - app_net
+      - srv-network
 
-  nginx:
-    image: nginx:1.27-alpine
-    container_name: sendautomail_nginx
-    restart: unless-stopped
+  # IL DOIT ÊTRE ALIGNÉ AVEC 'sendmail-api'
+  hot-reload:
+    image: node:20-slim
+    container_name: sendmail-hot-reload
+    working_dir: /app
+    volumes:
+      - .:/app
     ports:
-      - "80:80"
-    volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-    depends_on:
-      sendautomail:
-        condition: service_started
+      - "3000:3000"
+    entrypoint: ["sh", "-c", "npm install browser-sync && node dev-server.js"]
     networks:
-      - app_net
-
-  db:
-    image: postgres:16-alpine
-    container_name: sendautomail_db
-    restart: unless-stopped
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-sendautomail}
-      POSTGRES_USER: ${POSTGRES_USER:-sendautomail}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me}
-    volumes:
-      - db_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sendautomail} -d ${POSTGRES_DB:-sendautomail}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
-    networks:
-      - app_net
+      - srv-network
 
 networks:
-  app_net:
-    driver: bridge
-
-volumes:
-  db_data:
+  srv-network:
+    external: true
