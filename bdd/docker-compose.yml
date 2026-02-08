@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: appdb
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    networks:
+      - srv-network
+
+networks:
+  srv-network:
+    external: true

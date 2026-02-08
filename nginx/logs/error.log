@@ -1,0 +1,212 @@
+2026/02/07 18:40:12 [notice] 1#1: using the "epoll" event method
+2026/02/07 18:40:12 [notice] 1#1: nginx/1.29.5
+2026/02/07 18:40:12 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2026/02/07 18:40:12 [notice] 1#1: OS: Linux 5.15.0-168-generic
+2026/02/07 18:40:12 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:524288
+2026/02/07 18:40:12 [notice] 1#1: start worker processes
+2026/02/07 18:40:12 [notice] 1#1: start worker process 20
+2026/02/07 18:40:12 [notice] 1#1: start worker process 21
+2026/02/07 18:40:12 [notice] 1#1: start worker process 22
+2026/02/07 18:40:12 [notice] 1#1: start worker process 23
+2026/02/07 18:40:58 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2026/02/07 18:40:58 [notice] 20#20: gracefully shutting down
+2026/02/07 18:40:58 [notice] 21#21: gracefully shutting down
+2026/02/07 18:40:58 [notice] 20#20: exiting
+2026/02/07 18:40:58 [notice] 23#23: gracefully shutting down
+2026/02/07 18:40:58 [notice] 21#21: exiting
+2026/02/07 18:40:58 [notice] 23#23: exiting
+2026/02/07 18:40:58 [notice] 20#20: exit
+2026/02/07 18:40:58 [notice] 21#21: exit
+2026/02/07 18:40:58 [notice] 23#23: exit
+2026/02/07 18:40:58 [notice] 22#22: gracefully shutting down
+2026/02/07 18:40:58 [notice] 22#22: exiting
+2026/02/07 18:40:58 [notice] 22#22: exit
+2026/02/07 18:40:58 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2026/02/07 18:40:58 [notice] 1#1: worker process 20 exited with code 0
+2026/02/07 18:40:58 [notice] 1#1: worker process 21 exited with code 0
+2026/02/07 18:40:58 [notice] 1#1: worker process 22 exited with code 0
+2026/02/07 18:40:58 [notice] 1#1: signal 29 (SIGIO) received
+2026/02/07 18:40:58 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2026/02/07 18:40:58 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2026/02/07 18:40:58 [notice] 1#1: worker process 23 exited with code 0
+2026/02/07 18:40:58 [notice] 1#1: exit
+2026/02/07 19:50:45 [emerg] 1#1: host not found in upstream "sendmail-api" in /etc/nginx/conf.d/sendmail.conf:10
+2026/02/07 19:50:46 [emerg] 1#1: host not found in upstream "sendmail-api" in /etc/nginx/conf.d/sendmail.conf:10
+2026/02/07 19:50:47 [emerg] 1#1: host not found in upstream "sendmail-api" in /etc/nginx/conf.d/sendmail.conf:10
+2026/02/07 19:50:47 [emerg] 1#1: host not found in upstream "sendmail-api" in /etc/nginx/conf.d/sendmail.conf:10
+2026/02/07 19:50:49 [emerg] 1#1: host not found in upstream "sendmail-api" in /etc/nginx/conf.d/sendmail.conf:10
+2026/02/07 19:50:51 [emerg] 1#1: host not found in upstream "sendmail-api" in /etc/nginx/conf.d/sendmail.conf:10
+2026/02/07 19:50:54 [emerg] 1#1: host not found in upstream "sendmail-api" in /etc/nginx/conf.d/sendmail.conf:10
+2026/02/07 19:51:01 [emerg] 1#1: host not found in upstream "sendmail-api" in /etc/nginx/conf.d/sendmail.conf:10
+2026/02/07 19:51:14 [emerg] 1#1: host not found in upstream "sendmail-api" in /etc/nginx/conf.d/sendmail.conf:10
+2026/02/07 19:51:40 [emerg] 1#1: host not found in upstream "sendmail-api" in /etc/nginx/conf.d/sendmail.conf:10
+2026/02/07 19:52:13 [emerg] 1#1: host not found in upstream "sendmail-api" in /etc/nginx/conf.d/sendmail.conf:10
+2026/02/07 19:52:13 [emerg] 1#1: host not found in upstream "sendmail-api" in /etc/nginx/conf.d/sendmail.conf:10
+2026/02/07 19:52:14 [emerg] 1#1: host not found in upstream "sendmail-api" in /etc/nginx/conf.d/sendmail.conf:10
+2026/02/07 19:52:15 [emerg] 1#1: host not found in upstream "sendmail-api" in /etc/nginx/conf.d/sendmail.conf:10
+2026/02/07 19:52:17 [emerg] 1#1: host not found in upstream "sendmail-api" in /etc/nginx/conf.d/sendmail.conf:10
+2026/02/07 19:52:19 [emerg] 1#1: host not found in upstream "sendmail-api" in /etc/nginx/conf.d/sendmail.conf:10
+2026/02/07 19:52:22 [notice] 1#1: using the "epoll" event method
+2026/02/07 19:52:22 [notice] 1#1: nginx/1.29.5
+2026/02/07 19:52:22 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2026/02/07 19:52:22 [notice] 1#1: OS: Linux 5.15.0-168-generic
+2026/02/07 19:52:22 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:524288
+2026/02/07 19:52:22 [notice] 1#1: start worker processes
+2026/02/07 19:52:22 [notice] 1#1: start worker process 20
+2026/02/07 19:52:22 [notice] 1#1: start worker process 21
+2026/02/07 19:52:22 [notice] 1#1: start worker process 22
+2026/02/07 19:52:22 [notice] 1#1: start worker process 23
+2026/02/07 20:06:08 [error] 20#20: *6 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.18.0.5, server: , request: "GET /favicon.ico HTTP/1.1", host: "nginx", referrer: "http://192.168.4.253:3000/"
+2026/02/07 22:05:26 [error] 20#20: *18 open() "/usr/share/nginx/html/login.html" failed (2: No such file or directory), client: 172.18.0.5, server: , request: "GET /login.html HTTP/1.1", host: "nginx"
+2026/02/07 22:06:38 [error] 20#20: *19 open() "/usr/share/nginx/html/login.html" failed (2: No such file or directory), client: 172.18.0.5, server: , request: "GET /login.html HTTP/1.1", host: "nginx"
+2026/02/07 22:08:10 [error] 20#20: *20 open() "/usr/share/nginx/html/login.html" failed (2: No such file or directory), client: 172.18.0.5, server: , request: "GET /login.html HTTP/1.1", host: "nginx"
+2026/02/07 22:08:26 [error] 21#21: *21 open() "/usr/share/nginx/html/login.html" failed (2: No such file or directory), client: 192.168.4.253, server: , request: "GET /login.html HTTP/1.1", host: "192.168.4.253"
+2026/02/07 22:08:38 [error] 21#21: *22 open() "/usr/share/nginx/html/login.html" failed (2: No such file or directory), client: 172.18.0.5, server: , request: "GET /login.html HTTP/1.1", host: "nginx"
+2026/02/07 22:22:34 [error] 21#21: *92 open() "/usr/share/nginx/html/createlogin.html" failed (2: No such file or directory), client: 172.18.0.5, server: , request: "GET /createlogin.html HTTP/1.1", host: "nginx"
+2026/02/07 22:22:41 [error] 21#21: *93 open() "/usr/share/nginx/html/login/createlogin.html" failed (2: No such file or directory), client: 172.18.0.5, server: , request: "GET /login/createlogin.html HTTP/1.1", host: "nginx"
+2026/02/07 22:22:49 [error] 21#21: *94 open() "/usr/share/nginx/html/login.html" failed (2: No such file or directory), client: 172.18.0.5, server: , request: "GET /login.html HTTP/1.1", host: "nginx"
+2026/02/07 22:25:21 [error] 21#21: *95 open() "/usr/share/nginx/html/login/createlogin.html" failed (2: No such file or directory), client: 172.18.0.5, server: , request: "GET /login/createlogin.html HTTP/1.1", host: "nginx"
+2026/02/07 22:25:22 [error] 21#21: *96 open() "/usr/share/nginx/html/login.html" failed (2: No such file or directory), client: 172.18.0.5, server: , request: "GET /login.html HTTP/1.1", host: "nginx"
+2026/02/07 22:25:30 [error] 21#21: *97 open() "/usr/share/nginx/html/login.html" failed (2: No such file or directory), client: 172.18.0.5, server: , request: "GET /login.html HTTP/1.1", host: "nginx"
+2026/02/07 22:25:42 [error] 22#22: *101 open() "/usr/share/nginx/html/login.html" failed (2: No such file or directory), client: 172.18.0.5, server: , request: "GET /login.html HTTP/1.1", host: "nginx"
+2026/02/07 22:25:52 [error] 22#22: *102 open() "/usr/share/nginx/html/login/login.html" failed (2: No such file or directory), client: 172.18.0.5, server: , request: "GET /login/login.html HTTP/1.1", host: "nginx"
+2026/02/07 22:25:59 [error] 22#22: *103 open() "/usr/share/nginx/html/login/login.html" failed (2: No such file or directory), client: 172.18.0.5, server: , request: "GET /login/login.html HTTP/1.1", host: "nginx"
+2026/02/07 22:26:00 [error] 22#22: *104 open() "/usr/share/nginx/html/login/createlogin.html" failed (2: No such file or directory), client: 172.18.0.5, server: , request: "GET /login/createlogin.html HTTP/1.1", host: "nginx"
+2026/02/07 22:26:09 [notice] 24#24: signal process started
+2026/02/07 22:26:09 [notice] 1#1: signal 1 (SIGHUP) received from 24, reconfiguring
+2026/02/07 22:26:09 [notice] 1#1: reconfiguring
+2026/02/07 22:26:09 [notice] 1#1: using the "epoll" event method
+2026/02/07 22:26:09 [notice] 1#1: start worker processes
+2026/02/07 22:26:09 [notice] 1#1: start worker process 30
+2026/02/07 22:26:09 [notice] 1#1: start worker process 31
+2026/02/07 22:26:09 [notice] 1#1: start worker process 32
+2026/02/07 22:26:09 [notice] 1#1: start worker process 33
+2026/02/07 22:26:09 [notice] 22#22: gracefully shutting down
+2026/02/07 22:26:09 [notice] 21#21: gracefully shutting down
+2026/02/07 22:26:09 [notice] 20#20: gracefully shutting down
+2026/02/07 22:26:09 [notice] 22#22: exiting
+2026/02/07 22:26:09 [notice] 21#21: exiting
+2026/02/07 22:26:09 [notice] 20#20: exiting
+2026/02/07 22:26:09 [notice] 22#22: exit
+2026/02/07 22:26:09 [notice] 21#21: exit
+2026/02/07 22:26:09 [notice] 20#20: exit
+2026/02/07 22:26:09 [notice] 23#23: gracefully shutting down
+2026/02/07 22:26:09 [notice] 23#23: exiting
+2026/02/07 22:26:09 [notice] 23#23: exit
+2026/02/07 22:26:09 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2026/02/07 22:26:09 [notice] 1#1: worker process 22 exited with code 0
+2026/02/07 22:26:09 [notice] 1#1: signal 29 (SIGIO) received
+2026/02/07 22:26:09 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2026/02/07 22:26:09 [notice] 1#1: worker process 23 exited with code 0
+2026/02/07 22:26:09 [notice] 1#1: signal 29 (SIGIO) received
+2026/02/07 22:26:09 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2026/02/07 22:26:09 [notice] 1#1: worker process 20 exited with code 0
+2026/02/07 22:26:09 [notice] 1#1: worker process 21 exited with code 0
+2026/02/07 22:26:09 [notice] 1#1: signal 29 (SIGIO) received
+2026/02/08 00:02:53 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2026/02/08 00:02:53 [notice] 31#31: gracefully shutting down
+2026/02/08 00:02:53 [notice] 33#33: gracefully shutting down
+2026/02/08 00:02:53 [notice] 31#31: exiting
+2026/02/08 00:02:53 [notice] 33#33: exiting
+2026/02/08 00:02:53 [notice] 33#33: exit
+2026/02/08 00:02:53 [notice] 31#31: exit
+2026/02/08 00:02:53 [notice] 32#32: gracefully shutting down
+2026/02/08 00:02:53 [notice] 30#30: gracefully shutting down
+2026/02/08 00:02:53 [notice] 32#32: exiting
+2026/02/08 00:02:53 [notice] 30#30: exiting
+2026/02/08 00:02:53 [notice] 32#32: exit
+2026/02/08 00:02:53 [notice] 30#30: exit
+2026/02/08 00:02:53 [notice] 1#1: signal 17 (SIGCHLD) received from 30
+2026/02/08 00:02:53 [notice] 1#1: worker process 30 exited with code 0
+2026/02/08 00:02:53 [notice] 1#1: worker process 31 exited with code 0
+2026/02/08 00:02:53 [notice] 1#1: signal 29 (SIGIO) received
+2026/02/08 00:02:53 [notice] 1#1: signal 17 (SIGCHLD) received from 33
+2026/02/08 00:02:53 [notice] 1#1: worker process 32 exited with code 0
+2026/02/08 00:02:53 [notice] 1#1: worker process 33 exited with code 0
+2026/02/08 00:02:53 [notice] 1#1: exit
+2026/02/08 00:02:54 [notice] 1#1: using the "epoll" event method
+2026/02/08 00:02:54 [notice] 1#1: nginx/1.29.5
+2026/02/08 00:02:54 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2026/02/08 00:02:54 [notice] 1#1: OS: Linux 5.15.0-168-generic
+2026/02/08 00:02:54 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:524288
+2026/02/08 00:02:54 [notice] 1#1: start worker processes
+2026/02/08 00:02:54 [notice] 1#1: start worker process 20
+2026/02/08 00:02:54 [notice] 1#1: start worker process 21
+2026/02/08 00:02:54 [notice] 1#1: start worker process 22
+2026/02/08 00:02:54 [notice] 1#1: start worker process 23
+2026/02/08 00:08:06 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2026/02/08 00:08:06 [notice] 21#21: gracefully shutting down
+2026/02/08 00:08:06 [notice] 20#20: gracefully shutting down
+2026/02/08 00:08:06 [notice] 21#21: exiting
+2026/02/08 00:08:06 [notice] 20#20: exiting
+2026/02/08 00:08:06 [notice] 22#22: gracefully shutting down
+2026/02/08 00:08:06 [notice] 22#22: exiting
+2026/02/08 00:08:06 [notice] 20#20: exit
+2026/02/08 00:08:06 [notice] 21#21: exit
+2026/02/08 00:08:06 [notice] 22#22: exit
+2026/02/08 00:08:06 [notice] 23#23: gracefully shutting down
+2026/02/08 00:08:06 [notice] 23#23: exiting
+2026/02/08 00:08:06 [notice] 23#23: exit
+2026/02/08 00:08:06 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2026/02/08 00:08:06 [notice] 1#1: worker process 22 exited with code 0
+2026/02/08 00:08:06 [notice] 1#1: signal 29 (SIGIO) received
+2026/02/08 00:08:06 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2026/02/08 00:08:06 [notice] 1#1: worker process 21 exited with code 0
+2026/02/08 00:08:06 [notice] 1#1: signal 29 (SIGIO) received
+2026/02/08 00:08:06 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2026/02/08 00:08:06 [notice] 1#1: worker process 23 exited with code 0
+2026/02/08 00:08:06 [notice] 1#1: worker process 20 exited with code 0
+2026/02/08 00:08:06 [notice] 1#1: exit
+2026/02/08 00:08:07 [notice] 1#1: using the "epoll" event method
+2026/02/08 00:08:07 [notice] 1#1: nginx/1.29.5
+2026/02/08 00:08:07 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2026/02/08 00:08:07 [notice] 1#1: OS: Linux 5.15.0-168-generic
+2026/02/08 00:08:07 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:524288
+2026/02/08 00:08:07 [notice] 1#1: start worker processes
+2026/02/08 00:08:07 [notice] 1#1: start worker process 20
+2026/02/08 00:08:07 [notice] 1#1: start worker process 21
+2026/02/08 00:08:07 [notice] 1#1: start worker process 22
+2026/02/08 00:08:07 [notice] 1#1: start worker process 23
+2026/02/08 00:08:33 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2026/02/08 00:08:33 [notice] 20#20: gracefully shutting down
+2026/02/08 00:08:33 [notice] 21#21: gracefully shutting down
+2026/02/08 00:08:33 [notice] 20#20: exiting
+2026/02/08 00:08:33 [notice] 21#21: exiting
+2026/02/08 00:08:33 [notice] 20#20: exit
+2026/02/08 00:08:33 [notice] 21#21: exit
+2026/02/08 00:08:33 [notice] 22#22: gracefully shutting down
+2026/02/08 00:08:33 [notice] 22#22: exiting
+2026/02/08 00:08:33 [notice] 22#22: exit
+2026/02/08 00:08:33 [notice] 23#23: gracefully shutting down
+2026/02/08 00:08:33 [notice] 23#23: exiting
+2026/02/08 00:08:33 [notice] 23#23: exit
+2026/02/08 00:08:33 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2026/02/08 00:08:33 [notice] 1#1: worker process 20 exited with code 0
+2026/02/08 00:08:33 [notice] 1#1: worker process 22 exited with code 0
+2026/02/08 00:08:33 [notice] 1#1: signal 29 (SIGIO) received
+2026/02/08 00:08:33 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2026/02/08 00:08:33 [notice] 1#1: worker process 21 exited with code 0
+2026/02/08 00:08:33 [notice] 1#1: signal 29 (SIGIO) received
+2026/02/08 00:08:33 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2026/02/08 00:08:33 [notice] 1#1: worker process 23 exited with code 0
+2026/02/08 00:08:33 [notice] 1#1: exit
+2026/02/08 00:09:16 [notice] 1#1: using the "epoll" event method
+2026/02/08 00:09:16 [notice] 1#1: nginx/1.29.5
+2026/02/08 00:09:16 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2026/02/08 00:09:16 [notice] 1#1: OS: Linux 5.15.0-168-generic
+2026/02/08 00:09:16 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:524288
+2026/02/08 00:09:16 [notice] 1#1: start worker processes
+2026/02/08 00:09:16 [notice] 1#1: start worker process 20
+2026/02/08 00:09:16 [notice] 1#1: start worker process 21
+2026/02/08 00:09:16 [notice] 1#1: start worker process 22
+2026/02/08 00:09:16 [notice] 1#1: start worker process 23
+2026/02/08 00:10:46 [error] 20#20: *1 open() "/usr/share/nginx/html/style/reset.css" failed (2: No such file or directory), client: 10.10.10.10, server: _, request: "GET /style/reset.css HTTP/1.1", host: "192.168.4.253", referrer: "http://192.168.4.253/home/"
+2026/02/08 00:10:46 [error] 21#21: *8 open() "/usr/share/nginx/html/style/login.css" failed (2: No such file or directory), client: 10.10.10.10, server: _, request: "GET /style/login.css HTTP/1.1", host: "192.168.4.253", referrer: "http://192.168.4.253/home/"
+2026/02/08 00:11:22 [error] 20#20: *1 directory index of "/usr/share/nginx/html/home/calendrier/" is forbidden, client: 10.10.10.10, server: _, request: "GET /home/calendrier/ HTTP/1.1", host: "192.168.4.253"
+2026/02/08 00:25:47 [error] 20#20: *38 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 10.10.10.10, server: _, request: "GET /favicon.ico HTTP/1.1", host: "192.168.4.253", referrer: "http://192.168.4.253/login/"
+2026/02/08 17:50:08 [error] 20#20: *45 open() "/usr/share/nginx/html/style/reset.css" failed (2: No such file or directory), client: 10.10.10.10, server: _, request: "GET /style/reset.css HTTP/1.1", host: "192.168.4.253", referrer: "http://192.168.4.253/login/"
+2026/02/08 17:50:08 [error] 20#20: *47 open() "/usr/share/nginx/html/style/login.css" failed (2: No such file or directory), client: 10.10.10.10, server: _, request: "GET /style/login.css HTTP/1.1", host: "192.168.4.253", referrer: "http://192.168.4.253/login/"
+2026/02/08 17:50:23 [error] 20#20: *45 open() "/usr/share/nginx/html/style/reset.css" failed (2: No such file or directory), client: 10.10.10.10, server: _, request: "GET /style/reset.css HTTP/1.1", host: "192.168.4.253", referrer: "http://192.168.4.253/register/"
+2026/02/08 17:50:23 [error] 20#20: *47 open() "/usr/share/nginx/html/style/login.css" failed (2: No such file or directory), client: 10.10.10.10, server: _, request: "GET /style/login.css HTTP/1.1", host: "192.168.4.253", referrer: "http://192.168.4.253/register/"
+2026/02/08 17:51:28 [error] 20#20: *45 open() "/usr/share/nginx/html/style/reset.css" failed (2: No such file or directory), client: 10.10.10.10, server: _, request: "GET /style/reset.css HTTP/1.1", host: "192.168.4.253", referrer: "http://192.168.4.253/login/"
+2026/02/08 17:51:28 [error] 20#20: *47 open() "/usr/share/nginx/html/style/login.css" failed (2: No such file or directory), client: 10.10.10.10, server: _, request: "GET /style/login.css HTTP/1.1", host: "192.168.4.253", referrer: "http://192.168.4.253/login/"
