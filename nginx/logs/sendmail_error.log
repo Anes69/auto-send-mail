@@ -1,0 +1,4 @@
+2026/02/10 15:09:30 [error] 30#30: *1 directory index of "/srv/docker/sendmail/Frontend/" is forbidden, client: 10.10.10.10, server: 192.168.4.253, request: "GET /sendmail/ HTTP/1.1", host: "192.168.4.253"
+2026/02/10 15:09:34 [error] 30#30: *1 "/etc/nginx/html/index.html" is not found (2: No such file or directory), client: 10.10.10.10, server: 192.168.4.253, request: "GET / HTTP/1.1", host: "192.168.4.253"
+2026/02/10 15:11:24 [error] 22#22: *1 directory index of "/srv/docker/sendmail/Frontend/" is forbidden, client: 10.10.10.10, server: 192.168.4.253, request: "GET /sendmail/ HTTP/1.1", host: "192.168.4.253"
+2026/02/10 15:11:42 [error] 22#22: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"

@@ -218,3 +218,190 @@
 2026/02/08 18:02:20 [error] 22#22: *88 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.18.0.5, server: _, request: "GET /favicon.ico HTTP/1.1", host: "nginx", referrer: "http://192.168.4.253:3000/"
 2026/02/08 18:02:51 [error] 22#22: *92 open() "/usr/share/nginx/html/login/login.css" failed (2: No such file or directory), client: 192.168.4.253, server: _, request: "GET /login/login.css HTTP/1.1", host: "192.168.4.253"
 2026/02/08 18:02:56 [error] 22#22: *93 open() "/usr/share/nginx/html/login/login.css" failed (2: No such file or directory), client: 192.168.4.253, server: _, request: "GET /login/login.css HTTP/1.1", host: "192.168.4.253"
+2026/02/08 20:32:57 [error] 23#23: *110 open() "/usr/share/nginx/html/style/reset.css" failed (2: No such file or directory), client: 10.10.10.10, server: _, request: "GET /style/reset.css HTTP/1.1", host: "192.168.4.253", referrer: "http://192.168.4.253/home/"
+2026/02/08 20:32:57 [error] 23#23: *112 open() "/usr/share/nginx/html/style/login.css" failed (2: No such file or directory), client: 10.10.10.10, server: _, request: "GET /style/login.css HTTP/1.1", host: "192.168.4.253", referrer: "http://192.168.4.253/home/"
+2026/02/08 21:20:18 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2026/02/08 21:20:18 [notice] 21#21: gracefully shutting down
+2026/02/08 21:20:18 [notice] 22#22: gracefully shutting down
+2026/02/08 21:20:18 [notice] 22#22: exiting
+2026/02/08 21:20:18 [notice] 21#21: exiting
+2026/02/08 21:20:18 [notice] 22#22: exit
+2026/02/08 21:20:18 [notice] 21#21: exit
+2026/02/08 21:20:18 [notice] 20#20: gracefully shutting down
+2026/02/08 21:20:18 [notice] 20#20: exiting
+2026/02/08 21:20:18 [notice] 20#20: exit
+2026/02/08 21:20:18 [notice] 23#23: gracefully shutting down
+2026/02/08 21:20:18 [notice] 23#23: exiting
+2026/02/08 21:20:18 [notice] 23#23: exit
+2026/02/08 21:20:18 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2026/02/08 21:20:18 [notice] 1#1: worker process 20 exited with code 0
+2026/02/08 21:20:18 [notice] 1#1: worker process 21 exited with code 0
+2026/02/08 21:20:18 [notice] 1#1: worker process 22 exited with code 0
+2026/02/08 21:20:18 [notice] 1#1: worker process 23 exited with code 0
+2026/02/08 21:20:18 [notice] 1#1: exit
+2026/02/08 21:20:21 [notice] 1#1: using the "epoll" event method
+2026/02/08 21:20:21 [notice] 1#1: nginx/1.29.5
+2026/02/08 21:20:21 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2026/02/08 21:20:21 [notice] 1#1: OS: Linux 5.15.0-168-generic
+2026/02/08 21:20:21 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:524288
+2026/02/08 21:20:21 [notice] 1#1: start worker processes
+2026/02/08 21:20:21 [notice] 1#1: start worker process 20
+2026/02/08 21:20:21 [notice] 1#1: start worker process 21
+2026/02/08 21:20:21 [notice] 1#1: start worker process 22
+2026/02/08 21:20:21 [notice] 1#1: start worker process 23
+2026/02/10 14:20:30 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2026/02/10 14:20:30 [notice] 20#20: gracefully shutting down
+2026/02/10 14:20:30 [notice] 21#21: gracefully shutting down
+2026/02/10 14:20:30 [notice] 23#23: gracefully shutting down
+2026/02/10 14:20:30 [notice] 20#20: exiting
+2026/02/10 14:20:30 [notice] 21#21: exiting
+2026/02/10 14:20:30 [notice] 23#23: exiting
+2026/02/10 14:20:30 [notice] 23#23: exit
+2026/02/10 14:20:30 [notice] 21#21: exit
+2026/02/10 14:20:30 [notice] 20#20: exit
+2026/02/10 14:20:30 [notice] 22#22: gracefully shutting down
+2026/02/10 14:20:30 [notice] 22#22: exiting
+2026/02/10 14:20:30 [notice] 22#22: exit
+2026/02/10 14:20:30 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2026/02/10 14:20:30 [notice] 1#1: worker process 23 exited with code 0
+2026/02/10 14:20:30 [notice] 1#1: signal 29 (SIGIO) received
+2026/02/10 14:20:30 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2026/02/10 14:20:30 [notice] 1#1: worker process 20 exited with code 0
+2026/02/10 14:20:30 [notice] 1#1: worker process 21 exited with code 0
+2026/02/10 14:20:30 [notice] 1#1: worker process 22 exited with code 0
+2026/02/10 14:20:30 [notice] 1#1: exit
+2026/02/10 15:08:37 [notice] 1#1: using the "epoll" event method
+2026/02/10 15:08:37 [notice] 1#1: nginx/1.29.5
+2026/02/10 15:08:37 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2026/02/10 15:08:37 [notice] 1#1: OS: Linux 5.15.0-168-generic
+2026/02/10 15:08:37 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:524288
+2026/02/10 15:08:37 [notice] 1#1: start worker processes
+2026/02/10 15:08:37 [notice] 1#1: start worker process 20
+2026/02/10 15:08:37 [notice] 1#1: start worker process 21
+2026/02/10 15:08:37 [notice] 1#1: start worker process 22
+2026/02/10 15:08:37 [notice] 1#1: start worker process 23
+2026/02/10 15:09:23 [notice] 24#24: signal process started
+2026/02/10 15:09:23 [notice] 1#1: signal 1 (SIGHUP) received from 24, reconfiguring
+2026/02/10 15:09:23 [notice] 1#1: reconfiguring
+2026/02/10 15:09:23 [notice] 1#1: using the "epoll" event method
+2026/02/10 15:09:23 [notice] 1#1: start worker processes
+2026/02/10 15:09:23 [notice] 1#1: start worker process 30
+2026/02/10 15:09:23 [notice] 1#1: start worker process 31
+2026/02/10 15:09:23 [notice] 1#1: start worker process 32
+2026/02/10 15:09:23 [notice] 1#1: start worker process 33
+2026/02/10 15:09:23 [notice] 23#23: gracefully shutting down
+2026/02/10 15:09:23 [notice] 23#23: exiting
+2026/02/10 15:09:23 [notice] 23#23: exit
+2026/02/10 15:09:23 [notice] 20#20: gracefully shutting down
+2026/02/10 15:09:23 [notice] 20#20: exiting
+2026/02/10 15:09:23 [notice] 20#20: exit
+2026/02/10 15:09:23 [notice] 22#22: gracefully shutting down
+2026/02/10 15:09:23 [notice] 22#22: exiting
+2026/02/10 15:09:23 [notice] 21#21: gracefully shutting down
+2026/02/10 15:09:23 [notice] 21#21: exiting
+2026/02/10 15:09:23 [notice] 21#21: exit
+2026/02/10 15:09:23 [notice] 22#22: exit
+2026/02/10 15:09:23 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2026/02/10 15:09:23 [notice] 1#1: worker process 20 exited with code 0
+2026/02/10 15:09:23 [notice] 1#1: worker process 21 exited with code 0
+2026/02/10 15:09:23 [notice] 1#1: worker process 22 exited with code 0
+2026/02/10 15:09:23 [notice] 1#1: signal 29 (SIGIO) received
+2026/02/10 15:09:23 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2026/02/10 15:09:23 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2026/02/10 15:09:23 [notice] 1#1: worker process 23 exited with code 0
+2026/02/10 15:09:23 [notice] 1#1: signal 29 (SIGIO) received
+2026/02/10 15:10:10 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2026/02/10 15:10:10 [notice] 31#31: gracefully shutting down
+2026/02/10 15:10:10 [notice] 31#31: exiting
+2026/02/10 15:10:10 [notice] 31#31: exit
+2026/02/10 15:10:10 [notice] 33#33: gracefully shutting down
+2026/02/10 15:10:10 [notice] 33#33: exiting
+2026/02/10 15:10:10 [notice] 33#33: exit
+2026/02/10 15:10:10 [notice] 30#30: gracefully shutting down
+2026/02/10 15:10:10 [notice] 30#30: exiting
+2026/02/10 15:10:10 [notice] 30#30: exit
+2026/02/10 15:10:10 [notice] 32#32: gracefully shutting down
+2026/02/10 15:10:10 [notice] 32#32: exiting
+2026/02/10 15:10:10 [notice] 32#32: exit
+2026/02/10 15:10:10 [notice] 1#1: signal 17 (SIGCHLD) received from 30
+2026/02/10 15:10:10 [notice] 1#1: worker process 30 exited with code 0
+2026/02/10 15:10:10 [notice] 1#1: signal 29 (SIGIO) received
+2026/02/10 15:10:10 [notice] 1#1: signal 17 (SIGCHLD) received from 31
+2026/02/10 15:10:10 [notice] 1#1: worker process 31 exited with code 0
+2026/02/10 15:10:10 [notice] 1#1: signal 29 (SIGIO) received
+2026/02/10 15:10:10 [notice] 1#1: signal 17 (SIGCHLD) received from 33
+2026/02/10 15:10:10 [notice] 1#1: worker process 32 exited with code 0
+2026/02/10 15:10:10 [notice] 1#1: worker process 33 exited with code 0
+2026/02/10 15:10:10 [notice] 1#1: exit
+2026/02/10 15:10:21 [notice] 1#1: using the "epoll" event method
+2026/02/10 15:10:21 [notice] 1#1: nginx/1.29.5
+2026/02/10 15:10:21 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2026/02/10 15:10:21 [notice] 1#1: OS: Linux 5.15.0-168-generic
+2026/02/10 15:10:21 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:524288
+2026/02/10 15:10:21 [notice] 1#1: start worker processes
+2026/02/10 15:10:21 [notice] 1#1: start worker process 21
+2026/02/10 15:10:21 [notice] 1#1: start worker process 22
+2026/02/10 15:10:21 [notice] 1#1: start worker process 23
+2026/02/10 15:10:21 [notice] 1#1: start worker process 24
+2026/02/10 15:15:24 [notice] 1#1: using the "epoll" event method
+2026/02/10 15:15:24 [notice] 1#1: nginx/1.29.5
+2026/02/10 15:15:24 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2026/02/10 15:15:24 [notice] 1#1: OS: Linux 5.15.0-168-generic
+2026/02/10 15:15:24 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:524288
+2026/02/10 15:15:24 [notice] 1#1: start worker processes
+2026/02/10 15:15:24 [notice] 1#1: start worker process 19
+2026/02/10 15:15:24 [notice] 1#1: start worker process 20
+2026/02/10 15:15:24 [notice] 1#1: start worker process 21
+2026/02/10 15:15:24 [notice] 1#1: start worker process 22
+2026/02/10 15:16:28 [error] 22#22: *7 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:16:28 [error] 22#22: *7 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:16:28 [error] 22#22: *7 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:16:29 [error] 22#22: *7 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:16:29 [error] 22#22: *7 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:16:29 [error] 22#22: *7 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:16:29 [error] 22#22: *7 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:16:29 [error] 22#22: *7 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:16:29 [error] 22#22: *7 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:16:30 [error] 22#22: *7 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:16:30 [error] 22#22: *7 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:16:30 [error] 22#22: *7 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:16:30 [error] 22#22: *7 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:16:30 [error] 22#22: *7 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:16:34 [error] 20#20: *27 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.4.253, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:16:39 [error] 20#20: *29 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.4.253, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:20:05 [notice] 23#23: signal process started
+2026/02/10 15:20:05 [notice] 1#1: signal 1 (SIGHUP) received from 23, reconfiguring
+2026/02/10 15:20:05 [notice] 1#1: reconfiguring
+2026/02/10 15:20:05 [notice] 1#1: using the "epoll" event method
+2026/02/10 15:20:05 [notice] 1#1: start worker processes
+2026/02/10 15:20:05 [notice] 1#1: start worker process 29
+2026/02/10 15:20:05 [notice] 1#1: start worker process 30
+2026/02/10 15:20:05 [notice] 1#1: start worker process 31
+2026/02/10 15:20:05 [notice] 1#1: start worker process 32
+2026/02/10 15:20:05 [notice] 19#19: gracefully shutting down
+2026/02/10 15:20:05 [notice] 19#19: exiting
+2026/02/10 15:20:05 [notice] 22#22: gracefully shutting down
+2026/02/10 15:20:05 [notice] 22#22: exiting
+2026/02/10 15:20:05 [notice] 19#19: exit
+2026/02/10 15:20:05 [notice] 22#22: exit
+2026/02/10 15:20:05 [notice] 21#21: gracefully shutting down
+2026/02/10 15:20:05 [notice] 21#21: exiting
+2026/02/10 15:20:05 [notice] 21#21: exit
+2026/02/10 15:20:05 [notice] 20#20: gracefully shutting down
+2026/02/10 15:20:05 [notice] 20#20: exiting
+2026/02/10 15:20:05 [notice] 20#20: exit
+2026/02/10 15:20:05 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2026/02/10 15:20:05 [notice] 1#1: worker process 20 exited with code 0
+2026/02/10 15:20:05 [notice] 1#1: worker process 22 exited with code 0
+2026/02/10 15:20:05 [notice] 1#1: signal 29 (SIGIO) received
+2026/02/10 15:20:05 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2026/02/10 15:20:05 [notice] 1#1: worker process 21 exited with code 0
+2026/02/10 15:20:05 [notice] 1#1: signal 29 (SIGIO) received
+2026/02/10 15:20:05 [notice] 1#1: signal 17 (SIGCHLD) received from 19
+2026/02/10 15:20:05 [notice] 1#1: worker process 19 exited with code 0
+2026/02/10 15:20:05 [notice] 1#1: signal 29 (SIGIO) received
+2026/02/10 15:24:23 [error] 29#29: *69 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:24:24 [error] 29#29: *69 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:24:24 [error] 29#29: *69 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:24:24 [error] 29#29: *69 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"
+2026/02/10 15:24:24 [error] 29#29: *69 connect() failed (111: Connection refused) while connecting to upstream, client: 10.10.10.10, server: 192.168.4.253, request: "GET /api/docs HTTP/1.1", upstream: "http://172.18.0.4:8000/api/docs", host: "192.168.4.253"

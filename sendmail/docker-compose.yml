@@ -11,19 +11,6 @@ services:
     networks:
       - srv-network
 
-  # IL DOIT ÊTRE ALIGNÉ AVEC 'sendmail-api'
-  hot-reload:
-    image: node:20-slim
-    container_name: sendmail-hot-reload
-    working_dir: /app
-    volumes:
-      - .:/app
-    ports:
-      - "3000:3000"
-    entrypoint: ["sh", "-c", "npm install browser-sync && node dev-server.js"]
-    networks:
-      - srv-network
-
 networks:
   srv-network:
     external: true

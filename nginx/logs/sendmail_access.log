@@ -1,0 +1,6 @@
+10.10.10.10 - - [10/Feb/2026:15:09:30 +0000] "GET /sendmail HTTP/1.1" 301 244 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0"
+10.10.10.10 - - [10/Feb/2026:15:09:30 +0000] "GET /sendmail/ HTTP/1.1" 403 228 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0"
+10.10.10.10 - - [10/Feb/2026:15:09:34 +0000] "GET / HTTP/1.1" 404 153 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0"
+10.10.10.10 - - [10/Feb/2026:15:11:24 +0000] "GET /sendmail HTTP/1.1" 301 244 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0"
+10.10.10.10 - - [10/Feb/2026:15:11:24 +0000] "GET /sendmail/ HTTP/1.1" 403 228 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0"
+10.10.10.10 - - [10/Feb/2026:15:11:42 +0000] "GET /api/docs HTTP/1.1" 502 157 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0"

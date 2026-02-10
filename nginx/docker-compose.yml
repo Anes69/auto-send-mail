@@ -1,33 +1,37 @@
 services:
-  nginx:
+  nginx-dev:
     image: nginx:latest
-    container_name: nginx
+    container_name: nginx-dev
     restart: unless-stopped
     ports:
       - "80:80"
-      - "443:443"
     volumes:
-      - ./conf.d:/etc/nginx/conf.d
+      - ./conf.d:/etc/nginx/conf.d:ro
       - ./logs:/var/log/nginx
-      - /srv/docker/sendmail/Frontend:/usr/share/nginx/html:ro  # ✅ Bon
+      - /srv/docker:/srv/docker:ro
     networks:
       - srv-network
-    depends_on:
-      - php
 
-  # 👇 Ajoute le service PHP
-  php:
+  php-dev:
     image: php:8.2-fpm
-    container_name: php
+    container_name: php-dev
     restart: unless-stopped
     volumes:
-      - /srv/docker/sendmail/Frontend:/usr/share/nginx/html
-      - /srv/docker/sendmail/Backend:/app/backend
+      - /srv/docker:/srv/docker
     networks:
       - srv-network
-    environment:
-      - PHP_MEMORY_LIMIT=256M
-      - MAX_UPLOAD_SIZE=50M
+
+  livereload:
+    image: node:alpine
+    container_name: livereload
+    restart: unless-stopped
+    ports:
+      - "35729:35729"
+    volumes:
+      - /srv/docker:/data:ro
+    networks:
+      - srv-network
+    command: sh -c "npm install -g livereload && livereload /data -p 35729 -d"
 
 networks:
   srv-network:
