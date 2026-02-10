@@ -22,7 +22,7 @@ Objectifs de cette phase :
 
 ## Objectif et portée du projet
 
-Auto-Sending-Mail est conçu comme un outil **générique** de gestion de campagnes d’envoi de mails, basé sur un **sujet** (ou contexte) et des **templates conditionnels**.
+Auto-Sending-Mail est conçu comme un outil **universel** de gestion de campagnes d’envoi de mails, basé sur un **sujet** (ou contexte) et des **templates conditionnels**.
 
 Le projet n’est pas limité à un cas d’usage spécifique : il peut être utilisé aussi bien pour des campagnes de communication, de prospection, de suivi administratif, d’organisation d’événements, etc.
 
@@ -42,40 +42,43 @@ Le fonctionnement repose sur l’association entre :
 Le front sert à :
 - se connecter à un profil applicatif (auth dédiée à l’application),
 - gérer plusieurs comptes mail liés au profil,
-- naviguer entre plusieurs fonctionnalités de gestion (postes, tableau, calendrier, templates),
+- naviguer entre plusieurs fonctionnalités de gestion (**campagnes**, tableau, calendrier, templates),
 - préparer l’interface qui consommera plus tard l’API backend.
 
 ### Navigation / structure d’interface (concept)
-L’interface est pensée comme une **application “à une seule page de contexte”** (type dashboard) :
+L’interface est pensée comme un dashboard “**single context**” (même onglet navigateur), composé de :
+- une **sidebar fixe** (ne doit pas être modifiée pour le moment : paramètres, déconnexion, sélection de mailbox active, nom projet, user actif, etc.)
+- une zone de travail à droite avec des onglets type “folder” (inspiration Windows 11)
+- une seule zone centrale de contenu, dans laquelle les écrans sont **injectés** (fragments PHP, pas de pages HTML complètes)
 
-- Il y a une **structure fixe** (ex: sidebar, header, layout).
-- Les sections (“onglets”) ne doivent pas ouvrir de nouveaux onglets navigateur.
-- Les écrans (Postes / Tableau / Calendrier / Templates) doivent être **chargés dans une zone centrale** via des `include` PHP (ou une logique équivalente plus tard).
+> Important : les écrans (Campagnes/Tableau/Calendrier/Templates/Compte) ne sont pas conçus pour être “ouverts comme des pages”.  
+> Ils sont traités comme des **fragments** destinés à être inclus/injectés dans le conteneur de la page `home/index.php`.
 
-Image mentale :
-> Une maison avec plusieurs pièces, mais sans “murs” qui séparent des pages indépendantes : on reste dans la même maison, seul le contenu central change.
+### Onglets / sections (ordre)
+Les “folders tabs” en haut de la zone de travail sont affichés dans l’ordre suivant :
+1. **Campagnes**
+2. **Templates**
+3. **Tableau**
+4. **Calendrier**
+5. **Compte** (anciennement “mailboxes”, renommé)
 
-### Onglets / sections prévues
-Navigation centrale par onglets vers :
-- **Postes**
-- **Tableau**
-- **Calendrier**
-- **Templates**
+---
 
-#### Postes
-- Un poste correspond à un tableau à part entière, pour chaque poste, un tableau est dessiné.
-- La création du profil poste doit correspondre à une ligne disposant sous forme de cases les informations suivantes :
-  - Nom (du poste)
-  - Domaine (général, facultatif)
-  - Type (de contrat)
-  - Durée (hors CDI)
-  - École (si alternance)
-  - Définition des envois
-    - Premier envoi
-    - Relance (tous les jours, hebdomadaire, jour de semaine, etc.)
-  - Boutons d’interactions (Actif/Inactif, Ajout, Modification, Suppression)
+## Onglet "Campagnes"
 
-#### Tableau
+- Une campagne correspond à un ensemble cohérent :
+  - un sujet/contexte,
+  - une liste de destinataires,
+  - des règles d’envoi / relance,
+  - et des templates associés selon la situation.
+
+L’objectif de cet onglet est de permettre la création et la gestion des campagnes (v0 -> v1 : surtout cadrage + UI, puis CRUD réel côté backend).
+
+> Remarque : dans le cas spécifique “candidature / entretien d’embauche”, une campagne peut correspondre à un “poste” (au sens emploi), mais le projet reste volontairement universel.
+
+---
+
+## Onglet "Tableau"
 - Tableau central de l’application.
 - Permet l’ajout, la modification et la suppression de lignes.
 - Chaque ligne correspond à un **destinataire mail**.
@@ -90,14 +93,18 @@ Navigation centrale par onglets vers :
 
 Cet onglet sert de **source principale de données** pour le script d’envoi et de relance : chaque ligne doit contenir toutes les informations nécessaires à l’automatisation.
 
-#### Calendrier
+---
+
+## Onglet "Calendrier"
 - Interface de visualisation des envois de mails passés et à venir.
 - Permet de voir :
   - quand les prochains mails seront envoyés,
   - quels mails ont été envoyés à quelles listes.
 - Aucune action directe en v0 : **interface informative**.
 
-#### Templates
+---
+
+## Onglet "Templates"
 - Interface permettant de créer et gérer des modèles de mails.
 - Les templates peuvent récupérer automatiquement les informations stockées dans le tableau (variables dynamiques).
 - Plusieurs types de templates sont prévus :
@@ -108,13 +115,41 @@ Cet onglet sert de **source principale de données** pour le script d’envoi et
 
 ---
 
+## Onglet "Compte" — idée cible
+
+L’onglet **Compte** a vocation à devenir une **vision structurée de l’endroit où sont entreposés les mails** (une sorte de gestion des dossiers / arborescence), afin d’organiser et filtrer les messages liés à un sujet/campagne.
+
+Idée de base (à repofiner) :
+- Pour chaque campagne, créer une organisation logique des mails.
+
+Exemple d’arborescence :
+
+- `"nom de la campagne"/`
+  - `mail envoyé/`
+    - `Premier envoi/`
+    - `Relance/`
+  - `mail reçu/`
+    - `Acceptation/`
+    - `Refus/`
+
+> Cas spécifique “candidature / entretien d’embauche” : le `"nom de la campagne"` peut être le nom d’un poste (emploi), mais la structure reste la même.
+
+Objectifs envisagés (plus tard) :
+- mieux **structurer** les retours et le suivi (envois / réponses),
+- **filtrer** les mails et n’afficher que ceux qui parlent du sujet/campagne,
+- préparer une logique de classement/tri exploitable par le backend (IMAP folders/labels, indexation, ou mapping interne).
+
+> Cette partie est volontairement conceptuelle en v0 : le but est de cadrer une direction produit.
+
+---
+
 ## Auth (v0) : Login & Register (frontend uniquement pour le moment)
 
 ### Statut
-En v0, **le login et le register existent côté Frontend**, mais **tout fonctionne en local / mode “mock”** au sens où :
+En v0, le login et le register existent côté Frontend, mais **tout fonctionne en local / mode “cible”** :
 - les pages sont présentes,
 - les scripts JS envoient des requêtes `fetch()` vers des endpoints backend “cibles”,
-- **le backend réel n’est pas encore en place** (les routes sont donc à implémenter).
+- le backend réel n’est pas encore en place (les routes sont donc à implémenter).
 
 L’objectif est de :
 - valider l’UX (forms, validations, affichage d’erreurs),
@@ -126,10 +161,8 @@ L’objectif est de :
 - Script : `Frontend/login/script.js`
 - Fonctionnement :
   - Validation simple côté client (champs requis).
-  - Envoi en `POST` JSON vers :
-    - `POST /Backend/auth/login`
-  - Attendu côté backend (plus tard) :
-    - `{ success: true, token?: string, message?: string }`
+  - Envoi en `POST` JSON vers : `POST /Backend/auth/login`
+  - Attendu côté backend (plus tard) : `{ success: true, token?: string, message?: string }`
   - Si succès :
     - stocke le token (si présent) dans `localStorage` (`auth_token`)
     - redirige vers `../home/`
@@ -141,10 +174,8 @@ L’objectif est de :
 - Script : `Frontend/register/script.js`
 - Fonctionnement :
   - Validation côté client (champs requis, email valide, mot de passe min 6, confirmation).
-  - Envoi en `POST` JSON vers :
-    - `POST /Backend/auth/register`
-  - Attendu côté backend (plus tard) :
-    - `{ success: true, message?: string }`
+  - Envoi en `POST` JSON vers : `POST /Backend/auth/register`
+  - Attendu côté backend (plus tard) : `{ success: true, message?: string }`
   - Si succès :
     - affiche un message
     - redirige vers `../login/`
@@ -194,123 +225,10 @@ Le backend doit assurer les fonctions suivantes :
 
 ---
 
-### 2) Proposition d’architecture backend (v0)
-
-Architecture modulaire, évolutive, démarrable rapidement :
-
-- **API Backend**
-  - Expose les endpoints pour le front (auth, campagnes, destinataires, templates, calendrier, historique).
-
-- **Scheduler / Worker**
-  - Exécute les tâches planifiées (envois, relances, sync de boîtes mail).
-  - Traite les jobs en file (queue).
-
-- **Mail Connector Layer**
-  - Adaptateurs par fournisseur (Gmail, Outlook, IMAP/SMTP standard).
-  - Isole la logique spécifique fournisseur.
-
-- **Rule Engine (simple en v0)**
-  - Applique les règles métier de campagne.
-  - Détermine le “prochain template” et le “prochain envoi”.
-
-- **Persistence Layer**
-  - Base relationnelle pour les objets métier.
-  - Stockage de logs événementiels.
-
-Cette séparation permet de garder un backend lisible, testable et extensible.
-
----
-
-### 3) Modèle de données métier (minimum viable)
-
-Entités clés proposées :
-
-- `User`
-  - Informations de connexion à l’application.
-
-- `MailboxAccount`
-  - Compte mail lié à un user (provider, adresse, statut de connexion).
-
-- `Campaign`
-  - Sujet/objectif de campagne, règles globales, statut (active, pause, terminée).
-
-- `Recipient`
-  - Contact ciblé (nom, email, métadonnées).
-
-- `CampaignRecipient`
-  - État d’un destinataire dans une campagne (étape courante, dernier envoi, prochaine action).
-
-- `Template`
-  - Modèle de mail (type, version, variables).
-
-- `MessageEvent`
-  - Historique : prévu, envoyé, reçu, répondu, échec.
-
-- `InboundMessage`
-  - Mail entrant brut + classification + rattachement à un thread/campagne.
-
-- `RuleSet`
-  - Règles de relance et conditions d’arrêt.
-
----
-
-### 4) Flux backend cible
-
-1. L’utilisateur crée une campagne et importe des destinataires.
-2. Le backend associe un template initial et génère des envois planifiés.
-3. Le scheduler déclenche les envois au bon moment via le connecteur mail.
-4. Chaque action génère un `MessageEvent`.
-5. Le moteur d’analyse lit les réponses entrantes.
-6. Le moteur de règles adapte la suite (relance, arrêt, changement de template).
-7. L’API expose l’état à jour pour le tableau et le calendrier.
-
----
-
-### 5) Solutions proposées par besoin
-
-- **Besoin : relances fiables**
-  - Solution : planification centralisée + verrouillage par destinataire pour éviter les doublons.
-
-- **Besoin : adaptation selon réponses**
-  - Solution : classification entrante + transition d’état pilotée par règles.
-
-- **Besoin : multi-comptes mail**
-  - Solution : abstraction `MailboxAccount` + connecteurs fournisseurs.
-
-- **Besoin : visibilité produit**
-  - Solution : journal événementiel standardisé exploitable dans le tableau/calendrier.
-
-- **Besoin : sécurité**
-  - Solution : secrets chiffrés, rotation possible, permissions strictes.
-
----
-
-### 6) Priorités de développement (ordre recommandé)
-
-**Phase 1 – Socle**
-- Authentification utilisateur.
-- Gestion des mailboxes.
-- CRUD campagnes / destinataires / templates.
-
-**Phase 2 – Automatisation**
-- Scheduler + file de jobs.
-- Envoi initial + relances simples basées sur le temps.
-
-**Phase 3 – Intelligence de suivi**
-- Ingestion des mails entrants.
-- Rattachement aux threads.
-- Classification de réponse.
-
-**Phase 4 – Robustesse**
-- Logs, métriques, retries, idempotence.
-- Durcissement sécurité et conformité.
-
----
-
 ## Exemples de cas d’usage
 
 - Campagnes d’envoi de mails basées sur un sujet.
 - Relances automatiques en fonction des réponses reçues.
 - Suivi individuel de destinataires via un tableau centralisé.
 - Gestion de campagnes pour des associations, événements ou démarches administratives.
-- Envoi de candidatures (exemple d’utilisation).
+- Envoi de candidatures (exemple d’utilisation : une campagne peut correspondre à un “poste”).

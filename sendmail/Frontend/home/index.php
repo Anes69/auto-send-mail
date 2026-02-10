@@ -1,8 +1,8 @@
 <?php
 /**
  * Home - Dashboard Principal
- * Sidebar collapsible
- * Application AutoSend Mail
+ * Sidebar collapsible (NE PAS TOUCHER)
+ * Folder UI (tabs) + contenu injecté (sans reload)
  */
 
 // TODO: Récupérer les données utilisateur depuis la BDD
@@ -12,6 +12,59 @@ $userEmails = [
     ['email' => 'contact@sendmail.io', 'checked' => false],
     ['email' => 'pro@company.fr', 'checked' => false],
 ];
+
+/**
+ * Onglets (ordre imposé)
+ * - id: identifiant logique
+ * - label: texte affiché
+ * - partial: fichier inclus côté serveur (HTML partiel / fragment)
+ */
+$tabs = [
+    [
+        'id' => 'campagnes',
+        'label' => 'Campagnes',
+        'partial' => __DIR__ . '/campagnes/campagne.php',
+    ],
+    [
+        'id' => 'templates',
+        'label' => 'Templates',
+        'partial' => __DIR__ . '/templates/templates.php',
+    ],
+    [
+        'id' => 'tableau',
+        'label' => 'Tableau',
+        'partial' => __DIR__ . '/tableau/tableau.php',
+    ],
+    [
+        'id' => 'calendrier',
+        'label' => 'Calendrier',
+        'partial' => __DIR__ . '/calendrier/calendrier.php',
+    ],
+    [
+        'id' => 'compte',
+        'label' => 'Compte',
+        'partial' => __DIR__ . '/compte/compte.php',
+    ],
+];
+
+// onglet actif par défaut
+$defaultTabId = 'campagnes';
+
+// (optionnel) autoriser un chargement initial via ?tab=...
+$requestedTabId = isset($_GET['tab']) ? (string) $_GET['tab'] : $defaultTabId;
+
+// sécuriser: tab doit exister
+$tabIds = array_column($tabs, 'id');
+$activeTabId = in_array($requestedTabId, $tabIds, true) ? $requestedTabId : $defaultTabId;
+
+// retrouver le partial du tab actif
+$activeTab = null;
+foreach ($tabs as $t) {
+    if ($t['id'] === $activeTabId) {
+        $activeTab = $t;
+        break;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,36 +72,31 @@ $userEmails = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - AutoSend Mail</title>
+
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../assets/css/global.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ============================== -->
-    <!-- SIDEBAR                        -->
-    <!-- ============================== -->
+    <!-- ===================================================== -->
+    <!-- SIDEBAR (INTOUCHABLE)                                 -->
+    <!-- ===================================================== -->
     <aside class="sidebar" id="sidebar">
-
-        <!-- ===== TOP: Logo + User ===== -->
         <div class="sidebar-top">
-            <!-- Logo -->
             <div class="sidebar-logo">
                 <span class="sidebar-logo-icon">📧</span>
                 <span class="sidebar-logo-text">SendMail</span>
             </div>
-
-            <!-- User (nom seulement) -->
             <div class="sidebar-user">
                 <span class="user-name"><?= htmlspecialchars($username) ?></span>
             </div>
         </div>
 
-        <!-- ===== MIDDLE: Comptes email ===== -->
         <div class="sidebar-middle">
             <div class="user-emails">
                 <span class="emails-label">Comptes email</span>
-                <?php foreach (array_slice($userEmails, 0, 3) as $i => $mail): ?>
+                <?php foreach (array_slice($userEmails, 0, 3) as $mail): ?>
                     <label class="email-item" title="<?= htmlspecialchars($mail['email']) ?>">
                         <input
                             type="radio"
@@ -63,7 +111,6 @@ $userEmails = [
             </div>
         </div>
 
-        <!-- ===== BOTTOM: Paramètres + Déconnexion ===== -->
         <div class="sidebar-footer">
             <a href="#" class="sidebar-footer-btn btn-settings" title="Paramètres">
                 <span class="footer-icon">⚙️</span>
@@ -75,25 +122,55 @@ $userEmails = [
             </a>
         </div>
 
-        <!-- Toggle Button (cercle au bord droit) -->
         <button class="sidebar-toggle" id="sidebarToggle" title="Réduire / Étendre">
             <span class="toggle-arrow">◀</span>
         </button>
     </aside>
 
-    <!-- ============================== -->
-    <!-- MOBILE OVERLAY                 -->
-    <!-- ============================== -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!-- ============================== -->
-    <!-- MAIN CONTENT                   -->
-    <!-- ============================== -->
+    <!-- ===================================================== -->
+    <!-- WORKSPACE (ZONE FOLDER UI)                            -->
+    <!-- ===================================================== -->
     <main class="main-content" id="mainContent">
-        <!-- Contenu injecté par les sous-pages -->
+
+        <section class="workspace" id="workspace">
+
+            <!-- =============================== -->
+            <!-- FOLDER TABS (ordre imposé)      -->
+            <!-- =============================== -->
+            <nav class="folder-tabs" id="folderTabs" aria-label="Navigation dossier">
+                <?php foreach ($tabs as $tab): ?>
+                    <button
+                        type="button"
+                        class="folder-tab<?= $tab['id'] === $activeTabId ? ' is-active' : '' ?>"
+                        data-tab="<?= htmlspecialchars($tab['id']) ?>"
+                        aria-selected="<?= $tab['id'] === $activeTabId ? 'true' : 'false' ?>"
+                    >
+                        <?= htmlspecialchars($tab['label']) ?>
+                    </button>
+                <?php endforeach; ?>
+            </nav>
+
+            <!-- =============================== -->
+            <!-- FOLDER PANEL (content)          -->
+            <!-- =============================== -->
+            <section class="folder-panel" id="folderPanel">
+                <div class="folder-panel-inner" id="folderContent">
+                    <?php
+                    // rendu initial (1er chargement)
+                    if ($activeTab && is_file($activeTab['partial'])) {
+                        include $activeTab['partial'];
+                    } else {
+                        echo "<p>Onglet introuvable ou non configuré.</p>";
+                    }
+                    ?>
+                </div>
+            </section>
+
+        </section>
     </main>
 
-    <!-- Scripts -->
     <script src="../assets/js/utils.js"></script>
     <script src="script.js"></script>
 </body>
