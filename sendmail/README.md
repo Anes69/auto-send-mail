@@ -2,7 +2,7 @@
 
 Auto-Sending-Mail est un projet visant à fournir une interface permettant de connecter un ou plusieurs comptes mail afin d’automatiser l’envoi, la relance et le suivi de mails.
 
-L’utilisateur peut importer une liste de destinataires, définir quand, combien de fois, à quelle heure et quel mail envoyer à cette liste. Le suivi se fait via un tableau centralisé permettant de visualiser, pour chaque destinataire, les mails envoyés et les réponses reçues.
+L’utilisateur peut importer une liste de destinataires, définir quand, combien de fois, à quelle heure et quel mail envoyer à cette liste. Le suivi se fait via un tableau centralisé permettant d’observer l’état de chaque destinataire (dernier envoi, réponses, prochaine action, template associé, etc.).
 
 ---
 
@@ -10,7 +10,7 @@ L’utilisateur peut importer une liste de destinataires, définir quand, combie
 
 Le projet est actuellement en **v0 (phase de réflexion / cadrage)**.
 
-Objectif de cette phase :
+Objectifs de cette phase :
 - Énoncer clairement les besoins fonctionnels et techniques.
 - Définir une architecture cible simple et solide.
 - Identifier les priorités de développement.
@@ -24,29 +24,47 @@ Objectif de cette phase :
 
 Auto-Sending-Mail est conçu comme un outil **générique** de gestion de campagnes d’envoi de mails, basé sur un **sujet** (ou contexte) et des **templates conditionnels**.
 
-Le projet n’est pas limité à un cas d’usage spécifique : il peut être utilisé aussi bien pour des campagnes de communication, de prospection, de suivi administratif, d’organisation d’événements ou encore de candidatures, ces dernières n’étant qu’un exemple d’utilisation parmi d’autres.
+Le projet n’est pas limité à un cas d’usage spécifique : il peut être utilisé aussi bien pour des campagnes de communication, de prospection, de suivi administratif, d’organisation d’événements, etc.
 
-Le fonctionnement repose sur l’association entre un sujet, une liste de destinataires et des règles définissant quels templates utiliser en fonction des réponses reçues ou de l’absence de réponse.
+Le fonctionnement repose sur l’association entre :
+- un **sujet / campagne**
+- une **liste de destinataires**
+- un **ensemble de règles** définissant quels templates utiliser en fonction :
+  - des réponses reçues
+  - ou de l’absence de réponse
+  - ou d’autres conditions (étape de la campagne, limites, etc.)
 
 ---
 
-## Front-end
+## Front-end (v0)
 
-Dans un premier temps, l’interface doit permettre :
+### Objectif front (v0)
+Le front sert à :
+- se connecter à un profil applicatif (auth dédiée à l’application),
+- gérer plusieurs comptes mail liés au profil,
+- naviguer entre plusieurs fonctionnalités de gestion (postes, tableau, calendrier, templates),
+- préparer l’interface qui consommera plus tard l’API backend.
 
-- La connexion à un **profil propre à l’application**, chaque profil pouvant gérer **plusieurs comptes mail**.
-- Sur la gauche : sélection du compte mail actif.
-- Au centre : une navigation par onglets permettant d’accéder aux différentes fonctionnalités :
-  - **Postes**
-  - **Tableau**
-  - **Calendrier**
-  - **Templates**
+### Navigation / structure d’interface (concept)
+L’interface est pensée comme une **application “à une seule page de contexte”** (type dashboard) :
 
-### Détails des onglets
+- Il y a une **structure fixe** (ex: sidebar, header, layout).
+- Les sections (“onglets”) ne doivent pas ouvrir de nouveaux onglets navigateur.
+- Les écrans (Postes / Tableau / Calendrier / Templates) doivent être **chargés dans une zone centrale** via des `include` PHP (ou une logique équivalente plus tard).
+
+Image mentale :
+> Une maison avec plusieurs pièces, mais sans “murs” qui séparent des pages indépendantes : on reste dans la même maison, seul le contenu central change.
+
+### Onglets / sections prévues
+Navigation centrale par onglets vers :
+- **Postes**
+- **Tableau**
+- **Calendrier**
+- **Templates**
 
 #### Postes
 - Un poste correspond à un tableau à part entière, pour chaque poste, un tableau est dessiné.
-- La création du profil poste doit correspondre à une ligne disposant sous forme de case les informations suivantes :
+- La création du profil poste doit correspondre à une ligne disposant sous forme de cases les informations suivantes :
   - Nom (du poste)
   - Domaine (général, facultatif)
   - Type (de contrat)
@@ -61,7 +79,7 @@ Dans un premier temps, l’interface doit permettre :
 - Tableau central de l’application.
 - Permet l’ajout, la modification et la suppression de lignes.
 - Chaque ligne correspond à un **destinataire mail**.
-- Les colonnes incluent notamment :
+- Colonnes (exemples) :
   - Nom
   - Adresse mail
   - Numéro
@@ -75,13 +93,13 @@ Cet onglet sert de **source principale de données** pour le script d’envoi et
 #### Calendrier
 - Interface de visualisation des envois de mails passés et à venir.
 - Permet de voir :
-  - Quand les prochains mails seront envoyés
-  - Quels mails ont été envoyés à quelles listes
-- Aucune action directe dans un premier temps : **interface purement informative**.
+  - quand les prochains mails seront envoyés,
+  - quels mails ont été envoyés à quelles listes.
+- Aucune action directe en v0 : **interface informative**.
 
 #### Templates
 - Interface permettant de créer et gérer des modèles de mails.
-- Les templates peuvent récupérer automatiquement les informations stockées dans le tableau.
+- Les templates peuvent récupérer automatiquement les informations stockées dans le tableau (variables dynamiques).
 - Plusieurs types de templates sont prévus :
   - Premier envoi
   - Relance
@@ -90,7 +108,50 @@ Cet onglet sert de **source principale de données** pour le script d’envoi et
 
 ---
 
-## Back-end (version développée v0)
+## Auth (v0) : Login & Register (frontend uniquement pour le moment)
+
+### Statut
+En v0, **le login et le register existent côté Frontend**, mais **tout fonctionne en local / mode “mock”** au sens où :
+- les pages sont présentes,
+- les scripts JS envoient des requêtes `fetch()` vers des endpoints backend “cibles”,
+- **le backend réel n’est pas encore en place** (les routes sont donc à implémenter).
+
+L’objectif est de :
+- valider l’UX (forms, validations, affichage d’erreurs),
+- préparer les appels API,
+- préparer la future intégration de sessions/tokens.
+
+### Login
+- Page : `Frontend/login/index.php`
+- Script : `Frontend/login/script.js`
+- Fonctionnement :
+  - Validation simple côté client (champs requis).
+  - Envoi en `POST` JSON vers :
+    - `POST /Backend/auth/login`
+  - Attendu côté backend (plus tard) :
+    - `{ success: true, token?: string, message?: string }`
+  - Si succès :
+    - stocke le token (si présent) dans `localStorage` (`auth_token`)
+    - redirige vers `../home/`
+
+> Remarque : le stockage dans `localStorage` est temporaire (v0). La cible est de gérer une auth propre (sessions/cookies HTTPOnly ou autre stratégie validée).
+
+### Register
+- Page : `Frontend/register/index.php`
+- Script : `Frontend/register/script.js`
+- Fonctionnement :
+  - Validation côté client (champs requis, email valide, mot de passe min 6, confirmation).
+  - Envoi en `POST` JSON vers :
+    - `POST /Backend/auth/register`
+  - Attendu côté backend (plus tard) :
+    - `{ success: true, message?: string }`
+  - Si succès :
+    - affiche un message
+    - redirige vers `../login/`
+
+---
+
+## Back-end (cible, v0 -> v1)
 
 ### 1) Besoins backend à couvrir
 
