@@ -396,6 +396,125 @@ body {
 }
 
 /* ==========================================
+   WORKSPACE - FOLDER UI
+   ========================================== */
+.workspace {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #f5f6fa;
+}
+
+/* ==========================================
+   FOLDER TABS - États actifs
+   ========================================== */
+.folder-tabs {
+    display: flex;
+    gap: 4px;
+    padding: 16px 16px 0;
+    background: #f5f6fa;
+    border-bottom: 2px solid #e1e4e8;
+}
+
+.folder-tab {
+    position: relative;
+    padding: 12px 24px;
+    background: #2c3e50;
+    color: #95a5a6;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 8px 8px 0 0;
+    font-family: inherit;
+}
+
+.folder-tab:hover {
+    background: #34495e;
+    color: #ecf0f1;
+}
+
+.folder-tab.is-active {
+    background: #ffffff;
+    color: #2c3e50;
+    font-weight: 600;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.folder-tab:focus {
+    outline: 2px solid #3498db;
+    outline-offset: -2px;
+}
+
+/* ==========================================
+   FOLDER PANEL
+   ========================================== */
+.folder-panel {
+    background: #ffffff;
+    flex: 1;
+    overflow: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.folder-panel-inner {
+    padding: 24px;
+    min-height: 100%;
+}
+
+/* ==========================================
+   LOADING & ERROR STATES
+   ========================================== */
+.loading,
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    padding: 40px;
+    text-align: center;
+}
+
+.loading {
+    color: #7f8c8d;
+    font-size: 16px;
+}
+
+.loading::before {
+    content: '⏳';
+    font-size: 48px;
+    margin-bottom: 16px;
+    animation: pulse 1.5s ease-in-out infinite;
+    display: block;
+}
+
+.error {
+    color: #e74c3c;
+}
+
+.error p:first-child {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.error p:last-child {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.1);
+    }
+}
+
+/* ==========================================
    RESPONSIVE — MOBILE (≤ 768px)
    ========================================== */
 @media (max-width: 768px) {
@@ -469,5 +588,16 @@ body {
 
     .sidebar.collapsed .sidebar-footer {
         padding: 12px 12px 20px;
+    }
+
+    .folder-tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+
+    .folder-tab {
+        flex-shrink: 0;
+        padding: 10px 16px;
+        font-size: 13px;
     }
 }

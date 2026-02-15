@@ -1,195 +1,119 @@
 /**
- * script.js - Sidebar Home
- * Gestion sidebar collapsible + sélection email
- * AutoSend Mail
+ * Gestion des onglets (folder tabs)
+ * Chargement AJAX du contenu sans rechargement de page
  */
 
-(function () {
+(function() {
     'use strict';
 
-    /* ==========================================
-       DOM ELEMENTS
-       ========================================== */
-    const sidebar       = document.getElementById('sidebar');
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const overlay       = document.getElementById('sidebarOverlay');
+    // Sélecteurs
+    const folderTabs = document.getElementById('folderTabs');
+    const folderContent = document.getElementById('folderContent');
+    const tabButtons = document.querySelectorAll('.folder-tab');
 
-    /* ==========================================
-       CONSTANTS
-       ========================================== */
-    const STORAGE_KEY_COLLAPSED = 'sidebar_collapsed';
-    const STORAGE_KEY_EMAIL     = 'active_email';
-    const MOBILE_BREAKPOINT     = 768;
-
-    /* ==========================================
-       HELPERS
-       ========================================== */
-
-    function isMobile() {
-        return window.innerWidth <= MOBILE_BREAKPOINT;
-    }
-
-    function saveState(key, value) {
-        try { localStorage.setItem(key, value); }
-        catch (e) { console.warn('localStorage indisponible:', e); }
-    }
-
-    function getState(key, fallback) {
-        try { return localStorage.getItem(key) || fallback; }
-        catch (e) { return fallback; }
-    }
-
-    /* ==========================================
-       SIDEBAR: COLLAPSE / EXPAND (desktop)
-       ========================================== */
-
-    function collapseSidebar() {
-        sidebar.classList.add('collapsed');
-        saveState(STORAGE_KEY_COLLAPSED, 'true');
-    }
-
-    function expandSidebar() {
-        sidebar.classList.remove('collapsed');
-        saveState(STORAGE_KEY_COLLAPSED, 'false');
-    }
-
-    function toggleSidebar() {
-        if (isMobile()) return;
-        if (sidebar.classList.contains('collapsed')) {
-            expandSidebar();
-        } else {
-            collapseSidebar();
-        }
-    }
-
-    function restoreSidebarState() {
-        if (isMobile()) {
-            sidebar.classList.add('collapsed');
-            return;
-        }
-        var isCollapsed = getState(STORAGE_KEY_COLLAPSED, 'false');
-        if (isCollapsed === 'true') {
-            sidebar.classList.add('collapsed');
-        } else {
-            sidebar.classList.remove('collapsed');
-        }
-    }
-
-    /* ==========================================
-       SIDEBAR: MOBILE
-       ========================================== */
-
-    function openMobileSidebar() {
-        sidebar.classList.add('mobile-open');
-        overlay.classList.add('visible');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeMobileSidebar() {
-        sidebar.classList.remove('mobile-open');
-        overlay.classList.remove('visible');
-        document.body.style.overflow = '';
-    }
-
-    /* ==========================================
-       EMAIL SELECTION (radio, un seul)
-       ========================================== */
-
-    function setupEmailSelection() {
-        var radios = document.querySelectorAll('input[name="email_active"]');
-
-        // Restaurer la sélection sauvegardée
-        var savedEmail = getState(STORAGE_KEY_EMAIL, '');
-        if (savedEmail) {
-            radios.forEach(function (radio) {
-                if (radio.value === savedEmail) {
-                    radio.checked = true;
-                }
-            });
-        }
-
-        // Persister au changement
-        radios.forEach(function (radio) {
-            radio.addEventListener('change', function () {
-                if (this.checked) {
-                    saveState(STORAGE_KEY_EMAIL, this.value);
-                }
-            });
-        });
-    }
-
-    /* ==========================================
-       EVENT LISTENERS
-       ========================================== */
-
-    // Toggle (cercle bord droit, desktop)
-    if (sidebarToggle) {
-        sidebarToggle.addEventListener('click', function (e) {
-            e.preventDefault();
-            toggleSidebar();
-        });
-    }
-
-    // Overlay → fermer mobile
-    if (overlay) {
-        overlay.addEventListener('click', closeMobileSidebar);
-    }
-
-    // Escape → fermer mobile
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && isMobile()) {
-            closeMobileSidebar();
-        }
-    });
-
-    // Resize
-    var resizeTimer;
-    window.addEventListener('resize', function () {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function () {
-            if (isMobile()) {
-                sidebar.classList.add('collapsed');
-                closeMobileSidebar();
-            } else {
-                sidebar.classList.remove('mobile-open');
-                overlay.classList.remove('visible');
-                document.body.style.overflow = '';
-                restoreSidebarState();
-            }
-        }, 150);
-    });
-
-    /* ==========================================
-       PUBLIC API (pour les sous-pages)
-       ========================================== */
-    window.SidebarApp = {
-        open: function () {
-            if (isMobile()) { openMobileSidebar(); }
-            else { expandSidebar(); }
-        },
-        close: function () {
-            if (isMobile()) { closeMobileSidebar(); }
-            else { collapseSidebar(); }
-        },
-        toggle: function () {
-            if (isMobile()) {
-                sidebar.classList.contains('mobile-open')
-                    ? closeMobileSidebar()
-                    : openMobileSidebar();
-            } else {
-                toggleSidebar();
-            }
-        }
+    // Mapping des onglets vers leurs fichiers partiels
+    const tabPartials = {
+        'campagnes': 'folder/campagnes/campagne.php',
+        'templates': 'folder/templates/templates.php',
+        'tableau': 'folder/tableau/tableau.php',
+        'calendrier': 'folder/calendrier/calendrier.php',
+        'compte': 'folder/compte/compte.php'
     };
 
-    /* ==========================================
-       INIT
-       ========================================== */
-    function init() {
-        restoreSidebarState();
-        setupEmailSelection();
+    /**
+     * Charge le contenu d'un onglet via AJAX
+     * @param {string} tabId - ID de l'onglet à charger
+     */
+    function loadTabContent(tabId) {
+        const partial = tabPartials[tabId];
+        
+        if (!partial) {
+            console.error(`Onglet inconnu: ${tabId}`);
+            return;
+        }
+
+        // Afficher un loader pendant le chargement
+        folderContent.innerHTML = '<div class="loading">Chargement...</div>';
+
+        // Requête AJAX
+        fetch(partial)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(html => {
+                folderContent.innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Erreur lors du chargement:', error);
+                folderContent.innerHTML = `
+                    <div class="error">
+                        <p>❌ Erreur de chargement</p>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            });
     }
 
+    /**
+     * Met à jour l'état visuel des onglets
+     * @param {HTMLElement} activeButton - Bouton actif
+     */
+    function updateTabState(activeButton) {
+        // Retirer la classe active de tous les onglets
+        tabButtons.forEach(btn => {
+            btn.classList.remove('is-active');
+            btn.setAttribute('aria-selected', 'false');
+        });
+
+        // Activer l'onglet cliqué
+        activeButton.classList.add('is-active');
+        activeButton.setAttribute('aria-selected', 'true');
+    }
+
+    /**
+     * Gestion du clic sur un onglet
+     */
+    function handleTabClick(event) {
+        const button = event.currentTarget;
+        const tabId = button.getAttribute('data-tab');
+
+        // Mettre à jour l'état visuel
+        updateTabState(button);
+
+        // Charger le contenu
+        loadTabContent(tabId);
+
+        // Optionnel: mettre à jour l'URL sans recharger la page
+        if (history.pushState) {
+            const newUrl = `${window.location.pathname}?tab=${tabId}`;
+            history.pushState({ tab: tabId }, '', newUrl);
+        }
+    }
+
+    /**
+     * Initialisation des événements
+     */
+    function init() {
+        tabButtons.forEach(button => {
+            button.addEventListener('click', handleTabClick);
+        });
+
+        // Gestion du bouton retour du navigateur
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.tab) {
+                const button = document.querySelector(`[data-tab="${event.state.tab}"]`);
+                if (button) {
+                    updateTabState(button);
+                    loadTabContent(event.state.tab);
+                }
+            }
+        });
+    }
+
+    // Lancer l'initialisation quand le DOM est prêt
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
